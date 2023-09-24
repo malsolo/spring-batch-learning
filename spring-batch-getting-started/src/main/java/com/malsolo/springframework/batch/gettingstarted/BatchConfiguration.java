@@ -50,7 +50,7 @@ public class BatchConfiguration {
     @Bean
     public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager, JdbcBatchItemWriter<Person> writer) {
         return new StepBuilder("step1", jobRepository)
-                .<Person, Person> chunk(10, transactionManager)
+                .<Person, Person>chunk(10, transactionManager)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer)
@@ -66,10 +66,5 @@ public class BatchConfiguration {
                 .end()
                 .build();
     }
-
-
-
-
-
 
 }

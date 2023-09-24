@@ -20,9 +20,9 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
             log.info("!!! JOB FINISHED! Time to verify the results");
 
             jdbcTemplate.query("SELECT first_name, last_name FROM people",
-                    (rs, rowNum) -> new Person(
-                            rs.getString("first_name"),
-                            rs.getString("last_name"))
+                            (rs, rowNum) -> new Person(
+                                    rs.getString("first_name"),
+                                    rs.getString("last_name"))
                     )
                     .forEach(person -> log.info("Found <{{}}> in the database.", person));
         }
