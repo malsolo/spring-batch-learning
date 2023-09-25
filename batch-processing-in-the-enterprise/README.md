@@ -37,6 +37,42 @@ Caused by: java.net.SocketException: Network is down
 We'll solve this by using [Docker](https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/). 
 See [docker/docker-compose.yml](docker/docker-compose.yml)
 
+```
+❯ docker exec -it spring-batch-postgres psql -h localhost -U postgres 
+psql (16.0 (Debian 16.0-1.pgdg120+1))
+Type "help" for help.
+
+postgres=# \d
+Did not find any relations.
+postgres=# 
+```
+
+Note: to [initialize a Spring Batch Database](https://docs.spring.io/spring-boot/docs/3.1.4/reference/htmlsingle/#howto.data-initialization.batch):
+```
+spring:
+  batch:
+    jdbc:
+      initialize-schema: "always"
+```
+
+You can check the results:
+```
+postgres=# \d
+                      List of relations
+ Schema |             Name             |   Type   |  Owner   
+--------+------------------------------+----------+----------
+ public | batch_job_execution          | table    | postgres
+ public | batch_job_execution_context  | table    | postgres
+ public | batch_job_execution_params   | table    | postgres
+ public | batch_job_execution_seq      | sequence | postgres
+ public | batch_job_instance           | table    | postgres
+ public | batch_job_seq                | sequence | postgres
+ public | batch_step_execution         | table    | postgres
+ public | batch_step_execution_context | table    | postgres
+ public | batch_step_execution_seq     | sequence | postgres
+(9 rows)
+```
+
 * The tests we'll need the DB up and running.
 We'll solve this by configuring an in-memory DB for the tests.
 **_TODO_**
