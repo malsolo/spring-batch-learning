@@ -75,5 +75,14 @@ postgres=# \d
 
 * The tests we'll need the DB up and running.
 We'll solve this by configuring an in-memory DB for the tests.
-**_TODO_**
+
+See application.yml files both in main and test resources.
+
+See also:
+- https://www.baeldung.com/spring-testing-separate-data-source
+- https://www.baeldung.com/spring-boot-hsqldb
+
+## Basic demo
+
+TODO
 
