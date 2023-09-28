@@ -84,5 +84,38 @@ See also:
 
 ## Basic demo
 
-TODO
+See [HelloWorldConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/HelloWorldConfiguration.java)
+
+Just run the Spring boot application (*BatchProcessingInTheEnterpriseApplication*), but before,
+**start the PostgreSQL database** with docker compose:
+```
+.../spring-batch-learning/batch-processing-in-the-enterprise
+❯ cd docker
+
+❯ docker compose up 
+```
+
+## Multi-step demo
+
+See [MultipleStepsConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/MultipleStepsConfiguration.java)
+
+Again, **start the PostgreSQL database** with docker compose:
+```
+.../spring-batch-learning/batch-processing-in-the-enterprise
+❯ cd docker
+
+❯ docker compose up 
+```
+
+And run the Spring boot application.
+
+Watchout! you can only run one job. If there are several jobs configured, as in this case, the previous one and this one,
+you can either start them manually or configure which one to run.
+
+For the time being we'll use the latter by setting:
+> spring.batch.job.name
+
+
+
+
 
