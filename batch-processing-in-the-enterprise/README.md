@@ -82,7 +82,9 @@ See also:
 - https://www.baeldung.com/spring-testing-separate-data-source
 - https://www.baeldung.com/spring-boot-hsqldb
 
-## Basic demo
+## DEMOS
+
+### Basic demo
 
 See [HelloWorldConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/HelloWorldConfiguration.java)
 
@@ -95,7 +97,7 @@ Just run the Spring boot application (*BatchProcessingInTheEnterpriseApplication
 ❯ docker compose up 
 ```
 
-## Multi-step demo
+### Multi-step demo
 
 See [MultipleStepsConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/MultipleStepsConfiguration.java)
 
@@ -115,7 +117,42 @@ you can either start them manually or configure which one to run.
 For the time being we'll use the latter by setting:
 > spring.batch.job.name
 
+### Multi-step demo
+
+See [TransitionsConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/TransitionsConfiguration.java)
+
+Same steps as above.
 
 
+### IO demo
+
+See [FileJdbcConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/FileJdbcConfiguration.java)
+
+Steps needed:
+* Run Postgresql
+* Ensure the target table exists
+  * ```
+    postgres> CREATE TABLE ITEM  (
+                  first VARCHAR(50) NOT NULL,
+                  second VARCHAR(50) NOT NULL,
+                  phone VARCHAR(14) NOT NULL
+              )
+    ```
+* Run the Spring boot application.
+* Check the results
+> select count(*) from item;
+```
+count
+1000
+```
+
+> select * from item;
+```
+first,second,phone
+FALLON,GUTHRIE,(693) 791-3054
+ZANE,HUFF,(101) 523-6517
+BELL,GILES,(224) 200-9130
+
+```
 
 
