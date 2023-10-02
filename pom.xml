@@ -5,7 +5,7 @@
 
 	<groupId>com.malsolo.springframework.batch</groupId>
 	<artifactId>spring-batch-learning</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<name>spring-batch-learning</name>
@@ -13,6 +13,7 @@
 
 	<modules>
 		<module>spring-batch-getting-started</module>
+		<module>batch-processing-in-the-enterprise</module>
 	</modules>
 	
 </project>
