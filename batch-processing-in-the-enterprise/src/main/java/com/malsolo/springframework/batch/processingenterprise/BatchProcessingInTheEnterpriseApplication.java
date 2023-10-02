@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BatchProcessingInTheEnterpriseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BatchProcessingInTheEnterpriseApplication.class, args);
+		String[] realArgs = new String [] {
+				"batch.input=/invalid-input.csv,java.lang.String,true"
+				//, "run.id=1,java.lang.Long,true"
+		};
+		SpringApplication.run(BatchProcessingInTheEnterpriseApplication.class, realArgs);
 	}
 
 }
