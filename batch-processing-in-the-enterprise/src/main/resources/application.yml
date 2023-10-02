@@ -7,4 +7,4 @@ spring:
     jdbc:
       initialize-schema: "always"
     job:
-      name: csvToDatabaseRestartJob
+      name: csvToDatabaseSkipJob

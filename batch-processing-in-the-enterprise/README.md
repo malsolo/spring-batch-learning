@@ -255,3 +255,54 @@ count
 2,run.id,java.lang.Long,1,Y
 2,batch.input,java.lang.String,/invalid-input.csv,Y
 ```
+
+### SKIP demo
+
+See [SkipConfiguration](src/main/java/com/malsolo/springframework/batch/processingenterprise/SkipConfiguration.java)
+
+Steps needed:
+* Run Postgresql
+* Ensure the target table exists
+```
+postgres> CREATE TABLE ITEM  (
+              first VARCHAR(50) NOT NULL,
+              second VARCHAR(50) NOT NULL,
+              phone VARCHAR(14) NOT NULL
+          );
+          
+commit;
+```
+* Run the Spring boot.
+* Check the results
+> select count(*) from item;
+```
+count
+1999
+```
+
+The 1000 from the restart configuration, and the 999 valid rows from this skip configuration demo.
+
+> select (*) from batch_job_instance
+```
+2,0,csvToDatabaseSkipJob,579da183cec028818d1710ce58f20022
+```
+
+> select * from batch_job_execution
+```
+3,2,2,2023-10-02 18:35:25.975526,2023-10-02 18:35:26.001824,2023-10-02 18:35:27.122248,COMPLETED,COMPLETED,"",2023-10-02 18:35:27.122310
+```
+
+> EPA
+````
+3,111,csvToDatabaseSkipStep,3,2023-10-02 18:35:26.026971,2023-10-02 18:35:26.035556,2023-10-02 18:35:27.114039,COMPLETED,109,1000,0,999,0,1,0,2,COMPLETED,"",2023-10-02 18:35:27.114448
+````
+Thinks to note here:
+* 1000 reads
+* 999 writes
+* 0 read skips
+* 1 write skip
+* 2 rollbacks!
+
+Why 2 rollbacks? We skipped 1 item. It's because the way the BATCH works:
+* 1 rollback for the chunk
+* 1 rollback for the individual item
