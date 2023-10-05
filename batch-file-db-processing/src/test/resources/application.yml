@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  batch:
+    jdbc:
+      initialize-schema: "always"
+    job:
+      name: emptyJob

@@ -35,7 +35,7 @@ Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
 Caused by: java.net.SocketException: Network is down
 ```
 We'll solve this by using [Docker](https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/). 
-See [docker/docker-compose.yml](docker/docker-compose.yml)
+See [docker/docker-compose.yml](../docker/docker-compose.yml)
 
 ```
 ❯ docker exec -it spring-batch-postgres psql -h localhost -U postgres 
