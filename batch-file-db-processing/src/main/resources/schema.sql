@@ -2,16 +2,16 @@ drop table if exists video_game_sales;
 create table if not exists video_game_sales
 (
     rank         int,
-    name         text,
-    platform     text,
-    year         int,
-    genre        text,
-    publisher    text,
-    na_sales     text,
-    eu_sales     text,
-    jp_sales     text,
-    other_sales  text,
-    global_sales text,
+    name         VARCHAR(150),
+    platform     VARCHAR(50),
+    year         VARCHAR(10),
+    genre        VARCHAR(50),
+    publisher    VARCHAR(100),
+    na_sales     VARCHAR(20),
+    eu_sales     VARCHAR(20),
+    jp_sales     VARCHAR(20),
+    other_sales  VARCHAR(20),
+    global_sales VARCHAR(20),
     unique (name, platform, year, genre)
 
 );
