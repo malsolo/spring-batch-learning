@@ -15,11 +15,29 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<avro-schemas.version>1.0.0</avro-schemas.version>
+		<io.confluent.version>7.4.0</io.confluent.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-batch</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-avro-serializer</artifactId>
+			<version>${io.confluent.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.malsolo.springframework.batch</groupId>
+			<artifactId>avro-schemas</artifactId>
+			<version>${avro-schemas.version}</version>
 		</dependency>
 
 		<dependency>
@@ -47,6 +65,11 @@
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

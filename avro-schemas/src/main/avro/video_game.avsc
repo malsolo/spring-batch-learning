@@ -1,0 +1,11 @@
+{"namespace": "com.malsolo.springframework.batch.batchfiledbprocessing.avro",
+ "type": "record",
+ "name": "VideoGame",
+ "fields": [
+     {"name": "rank", "type": "int"},
+     {"name": "name",  "type": "string"},
+     {"name": "platform",  "type": "string"},
+     {"name": "year", "type": "int"},
+     {"name": "genre",  "type": "string"}
+ ]
+}

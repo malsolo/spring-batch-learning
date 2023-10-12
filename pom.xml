@@ -15,6 +15,7 @@
 		<module>spring-batch-getting-started</module>
 		<module>batch-processing-in-the-enterprise</module>
 		<module>batch-file-db-processing</module>
+        <module>avro-schemas</module>
 	</modules>
 	
 </project>

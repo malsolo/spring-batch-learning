@@ -5,9 +5,9 @@ Mainly, follow the Josh Long's video series for coding with Spring BATCH:
 * [Part 2](https://www.youtube.com/watch?v=_ra67pu5JO4&list=PL_HF_bzvfUwZsRO-FsjSXBU6uVOYWwGE-&index=2&t=718s&pp=iAQB)
 * Source code available at [GitHub](https://github.com/coffee-software-show/lets-code-spring-batch)
 
-# Run the project
+## Run the project
 
-## Start the Database
+### Start the Database
 
 **NOTE**: watchout! Don't forget to annotate the _Bean_ that needs the _jobParameters_ with _@StepScope_ (the file reader in our case) 
 
@@ -17,8 +17,12 @@ Mainly, follow the Josh Long's video series for coding with Spring BATCH:
 ...
 spring-batch-postgres  | 2023-10-05 09:40:21.052 UTC [1] LOG:  database system is ready to accept connections
 ```
+
+### Run the application
+
 * Create the target table, see [schema.sql](src/main/resources/schema.sql).
 * Run the Spring boot application.
+  * **NOTE:** set  _batch.jdbc.job.name_ to **_csvToDbJob_** in [application.yml](src/main/resources/application.yml)
 * Check the results
 > Logs
 ```
@@ -55,3 +59,31 @@ count
 ```
 1,168,csvToDbStep,1,2023-10-06 19:38:09.942366,2023-10-06 19:38:09.957716,2023-10-06 19:38:16.299793,COMPLETED,166,16598,0,16598,0,0,0,0,COMPLETED,"",2023-10-06 19:38:16.300488
 ```
+
+# Spring BATCH for processing from DB to Kafka
+
+## Steps done (just for knowing what we did)
+
+1. We created a project for the **Avro Schemas**:
+
+```
+❯ mvn archetype:generate -DgroupId=com.malsolo.springframework.batch -DartifactId=avro-schemas -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+```
+
+2. We added Kafka in the [docker-compose](../docker/docker-compose.yml)
+
+## Run the project
+
+### Start Database and Kafka
+
+**Run the docker images** with [docker compose](../docker/docker-compose.yml):
+```
+❯ docker compose up 
+```
+
+### Run the application
+
+* If you previously run the job above, you'll have everything in place, including the source DB filled with data.
+* Run the Spring boot application.
+  * **NOTE:** set  _batch.jdbc.job.name_ to **_dbToKafkaJob_** in [application.yml](src/main/resources/application.yml)
+* Check the results

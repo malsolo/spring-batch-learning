@@ -8,3 +8,8 @@ spring:
       initialize-schema: "always"
     job:
       name: emptyJob
+  kafka:
+    admin:
+      # to avoid AdminClient issues in the tests (Node -1 disconnected,
+      # Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+      auto-create: false

@@ -25,7 +25,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @Slf4j
-public class BatchConfiguration {
+public class BatchCsvToDbConfiguration {
 
     @Bean
     public Job csvToDbJob(JobRepository jobRepository, Step csvToDbStep) {
@@ -104,10 +104,6 @@ public class BatchConfiguration {
                 .sql(sql)
                 .beanMapped()
                 .build();
-    }
-
-    public record VideoGameSale(int rank, String name, String platform, String year, String genre, String publisher,
-                                String naSales, String euSales, String jpSales, String otherSales, String globalSales) {
     }
 
 }
