@@ -85,5 +85,5 @@ count
 
 * If you previously run the job above, you'll have everything in place, including the source DB filled with data.
 * Run the Spring boot application.
-  * **NOTE:** set  _batch.jdbc.job.name_ to **_csvToDbJob_** in [application.yml](src/main/resources/application.yml)
+  * **NOTE:** set  _batch.jdbc.job.name_ to **_dbToKafkaJob_** in [application.yml](src/main/resources/application.yml)
 * Check the results
